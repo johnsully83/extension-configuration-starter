@@ -1,3 +1,5 @@
+// this one is good, although we're missing the Placement interaction to hide the Placement field
+
 const interaction: FieldInteraction = {
   fieldName: 'correlatedCustomText9',
   name: 'department-stamp',
