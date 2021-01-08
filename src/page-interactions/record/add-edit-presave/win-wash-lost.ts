@@ -18,7 +18,13 @@ const interaction: PageInteraction = {
                 API.disable('customInt3');
 
                 
-
+                // one thing to keep in mind here is the user may not have changed the status to Approved, so we may want to get the old value of status via the API
+              // e.g. this should probably be 
+              /*
+               const oldStatus = appBridge.....// get status of Placement via API
+               
+               if (oldStatus !== 'Approved' && status === 'Approved') ...rest of code
+              */
                 if(status==='Approved') {//httpGET, not httpGet
                     return API.appBridge.httpGet('/entity/Placement/${API.currentEntityId}?fields=jobOrder(id,customInt3,numOpenings)').then(response => {
                         
@@ -27,9 +33,7 @@ const interaction: PageInteraction = {
 
                         return API.appBridge.httpPOST('/entity/JobOrder/${response.data.data.id}', {
                             numOpenings: response.data.data.numOpenings
-                        })// we should likely actually be modifying the form here (form.value.numOpenings = response.data.data.numOpenings, or something smilar
-                      // if we do this update via API, and then the save goes through directly after, the value being saved in the UI will overwrite the value we save via the API
-
+                        })
                     })
                 } else {
                     return Promise.resolve();
@@ -40,7 +44,7 @@ const interaction: PageInteraction = {
          
         };
 
-        
+        // need the check for if entity === 'Placement'!
         return myClient.init();
         
     },
