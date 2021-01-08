@@ -1,5 +1,6 @@
+// this interaction should be in the folder /field-interactions/placement, as it is now if you were to deploy this repository it would deploy to ClientContact.status
 const interaction: FieldInteraction = {
-    fieldName: 'Status',
+    fieldName: 'Status',// case sensitivity matters here, should be 'status'
     name: 'display-LTD-details',
     event: 'init',
     sortOrder: 0,
