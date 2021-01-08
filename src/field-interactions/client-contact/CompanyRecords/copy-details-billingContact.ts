@@ -11,7 +11,7 @@ const interaction: FieldInteraction = {
         change: () => {
           const billingContact = API.getValue('billingContact');
 
-          if(billingContact!==undefined) {
+          if(billingContact!==undefined) {// capital httpGET
               API.appBridge.httpGet('/entity/ClientContact/${billingContact.id}?fields=address,email,phone').then( response => {
                 API.setValue('customTextBlock3 ',response.data.data.email);
                 API.setValue('billingPhone ',response.data.data.phone);
