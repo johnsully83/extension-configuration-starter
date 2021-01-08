@@ -1,3 +1,5 @@
+// this interaction should be in the field-interactions/client-corporation folder
+// as it is now it wll be deployed to ClientContact.customText19
 const interaction: FieldInteraction = {
     fieldName: 'customText19',
     name: 'copy-details',
