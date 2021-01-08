@@ -16,6 +16,8 @@ const interaction: FieldInteraction = {
                 API.setValue('customTextBlock3 ',response.data.data.email);
                 API.setValue('billingPhone ',response.data.data.phone);
                 API.setValue('billingAddress',response.data.data.address);
+                // the spec didn't mention this, but address is an object like the below...we would need to format the address into a string
+                // { address1: 'a value', address2: 'a value', city: 'city', state: 'state', zip: 'zip' }
               })
 
           } else {
