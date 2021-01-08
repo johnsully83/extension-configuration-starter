@@ -1,3 +1,19 @@
+/*
+  this should be several interactions, some on JobOrder, some on Placement, i.e.
+  
+  Whenever a new requisition (job) is entered, hide the job.customFloat1 (# of Original Openings) field. Display it after save / existing requisitions.
+    - this should be a field interaction when the job is new
+  Whenever a new requisition (job) is entered, set job.customFloat1 (# of Original Openings) to the value in job.numOpenings (# of Openings).
+    - this should be a field/page interaction on Job when the job is new
+  Set job.customFloat1 (# of Original Openings) and customInt3 (Wins) to view only for all users on all job tracks.
+    - field interaction on JobOrder, can be the same as the ones above
+  Create a field interaction on Placement to run the following logic: 
+  When Placement.status for the job changes to “Approved”,
+  set job.customInt3 (Wins) to # job.customInt3 + 1
+  set job.numOpenings to job.numOpenings - 1, if it does not result in a negative number.  
+    - is this page interaction, minus the handful of initial lines around hiding/disabling customFloat1/customInt3
+*/
+
 const interaction: PageInteraction = {
     action: 'add-edit-presave',
     enabled: true,
