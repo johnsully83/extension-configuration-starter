@@ -19,7 +19,7 @@ const interaction: PageInteraction = {
 
                 
 
-                if(status==='Approved') {
+                if(status==='Approved') {//httpGET, not httpGet
                     return API.appBridge.httpGet('/entity/Placement/${API.currentEntityId}?fields=jobOrder(id,customInt3,numOpenings)').then(response => {
                         
                         API.setValue('customInt3',response.jobOrder.customInt3 + 1),
@@ -27,7 +27,8 @@ const interaction: PageInteraction = {
 
                         return API.appBridge.httpPOST('/entity/JobOrder/${response.data.data.id}', {
                             numOpenings: response.data.data.numOpenings
-                        })            
+                        })// we should likely actually be modifying the form here (form.value.numOpenings = response.data.data.numOpenings, or something smilar
+                      // if we do this update via API, and then the save goes through directly after, the value being saved in the UI will overwrite the value we save via the API
 
                     })
                 } else {
