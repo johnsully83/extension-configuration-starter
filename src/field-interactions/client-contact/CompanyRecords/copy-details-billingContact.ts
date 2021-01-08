@@ -1,3 +1,5 @@
+// this interaction should be in the field-interactions/client-corporation folder
+// as it is now the deploy would fail as ClientContact.billingContact is not a field
 const interaction: FieldInteraction = {
     fieldName: 'billingContact',
     name: 'copy-details',
